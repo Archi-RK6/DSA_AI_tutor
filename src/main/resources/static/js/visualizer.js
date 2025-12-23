@@ -698,6 +698,7 @@ function drawQueue(items, linked=false) {
   const row = document.createElement('div');
   row.className = 'horiz-list';
   row.style.alignItems = 'center';
+  row.style.gap = linked ? '10px' : '12px';
 
   const front = document.createElement('div');
   front.textContent = 'FRONT';
@@ -705,7 +706,12 @@ function drawQueue(items, linked=false) {
   front.style.opacity = '0.9';
   row.appendChild(front);
 
-  row.appendChild(Object.assign(document.createElement('span'), {className:'arrow', textContent:'→'}));
+  if (linked) {
+    const a = document.createElement('span');
+    a.className = 'arrow';
+    a.textContent = '→';
+    row.appendChild(a);
+  }
 
   items.forEach((v, i) => {
     const node = document.createElement('div');
@@ -724,7 +730,12 @@ function drawQueue(items, linked=false) {
     }
   });
 
-  row.appendChild(Object.assign(document.createElement('span'), {className:'arrow', textContent:'→'}));
+  if (linked) {
+    const a = document.createElement('span');
+    a.className = 'arrow';
+    a.textContent = '→';
+    row.appendChild(a);
+  }
 
   const rear = document.createElement('div');
   rear.textContent = 'REAR';
@@ -735,6 +746,7 @@ function drawQueue(items, linked=false) {
   wrap.appendChild(row);
   stage.appendChild(wrap);
 }
+
 
 function drawKeyValueTable(lines, title) {
   clearStage();

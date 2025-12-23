@@ -353,7 +353,8 @@
 <div class="msg" id="msg"></div>
 
 <script>
-  const ctx = '<%= request.getContextPath() %>';
+  window.ctx = '<%= request.getContextPath() %>';
+  const ctx = window.ctx;
 </script>
 <script src="${pageContext.request.contextPath}/js/visualizer.js"></script>
 </body>
